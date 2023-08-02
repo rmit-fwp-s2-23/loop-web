@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import "./HomePage.css";
 
 function HomePage() {
 
@@ -16,12 +17,14 @@ function HomePage() {
   }
 
   return (
-    <div>
-      <h1>Upcoming Movies</h1>
-      <ul>
+    <div className="container">
+      <div>
+      <h1 className="PageTitle">Upcoming Movies</h1>
+      </div>
+      <ul id="MovieList">
         {upcomingMovies.map((movie) => (
-          <li key={movie.id}>
-            <button onClick={() => handleMovieClick(movie.id)}><strong>{movie.title}</strong></button> - {movie.sessionTime}{" "}
+          <li onClick={() => handleMovieClick(movie.id)} id="MovieCard" key={movie.id}>
+            <strong>{movie.title}</strong> - {movie.sessionTime}{" "}
           </li>
         ))}
       </ul>
