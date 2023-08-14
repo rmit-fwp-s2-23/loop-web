@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
+import "./MovieDetailsPage.css"
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 function MovieDetailsPage() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const movieId = queryParams.get('id'); // Save Movie Id from the main page
+  const [rating, setRating] = useState(0);
+  const [review, setReview] = useState("");
 
-  const [review, setReview] = useState({
-    stars: 0,
-    writtenReview: "",
-  });
+
 
   const handleChange = (e) => {
-    setReview({
-      ...review,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const handleSubmit = (e) => {
@@ -28,29 +26,22 @@ function MovieDetailsPage() {
   };
 
   return (
-    <div>
-      <h2>Movie Details</h2>
+    <div className="container">
+      <h2 className="PageTitle">Movie Details</h2>
       {/* Add Movie Card and other Movie Details*/}
 
       {/*Review Form*/ }
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Stars:</label>
-          <input
-            type="number"
-            name="stars"
-            min="0"
-            max="5"
-            value={review.stars}
-            onChange={handleChange}
-          />
-        </div>
+
+      <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
+
         <div>
           <label>Written Review:</label>
           <textarea
             name="writtenReview"
             value={review.writtenReview}
             onChange={handleChange}
+            rows={6}
           />
         </div>
         <button type="submit">Submit Review</button>
