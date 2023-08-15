@@ -21,3 +21,10 @@ You may also see any lint errors in the console.
 Please note that currently, the system is designed to only have one user at a time. 
 This means that everytime a new signup is done, the user is updated and not added. 
 As such, you can only use the new signup credentials to log in
+
+
+
+# References
+
+https://medium.com/@byron.skoutaris/simple-popup-example-in-react-281a949bc3df
+

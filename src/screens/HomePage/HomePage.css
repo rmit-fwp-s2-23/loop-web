@@ -5,7 +5,7 @@
 }
 
 .PageTitle{
-  color: #2f4f4f;
+  color: #333;
   text-align: center;
   font-size: 32px;
   margin-bottom: 20px;    
@@ -30,8 +30,9 @@
     margin: 10px; 
     min-width: 300px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    color: #333;
 }
 
 #MovieCard:hover {
-    background-color: #0066cc;
+    background-color: #c8c8c8;
 }
