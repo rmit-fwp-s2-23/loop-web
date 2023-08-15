@@ -1,6 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import './SignInPage.css'
 
 function SignInPage() {
+
+  let navigate = useNavigate();
+
+  const [failedInfo, setFailedInfo] = useState('');
+  const [isIncorrectDetails, setIsIncorrectDetails] = useState(false);
+
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,12 +26,27 @@ function SignInPage() {
     e.preventDefault();
     // Handle login validation against localStorage data
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user && user.email === formData.email && user.password === formData.password) {
-      // Successful login
-      console.log("Sign in success", user);
+
+    if(user){
+      if (user.email != formData.email){
+        setIsIncorrectDetails(true);
+        setFailedInfo('Email not found');
+        console.log("incorrect email");
+      } else {
+        if (user.password != formData.password){
+          setIsIncorrectDetails(true);
+          setFailedInfo('Incorrect Password entered');
+          console.log("incorrect password");
+        } else {
+          //All details entered correctly
+          setIsIncorrectDetails(false);
+          localStorage.setItem('isLoggedIn','true');
+          navigate('/');
+          
+        }
+      }
     } else {
-      // Failed login
-      console.log("Invalid credentials");
+      //No registered user
     }
   };
 
@@ -47,6 +71,11 @@ function SignInPage() {
             value={formData.password}
             onChange={handleChange}
           />
+        </div>
+        <div className="incorrectDetails">
+        {
+          isIncorrectDetails && <p>{failedInfo}</p>
+        }
         </div>
         <button type="submit">Sign In</button>
       </form>

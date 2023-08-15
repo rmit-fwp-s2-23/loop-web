@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
+
 
 function SignUpPage() {
+
+  let navigate = useNavigate() //Navigator to link to other pages
+
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -20,6 +26,9 @@ function SignUpPage() {
     // Handle form submission and store data in localStorage
     localStorage.setItem("user", JSON.stringify(formData));
     console.log("Sign up form submitted", formData);
+
+    //Navigate to signup after successful Signup
+    navigate('/signin');
   };
 
   return (
