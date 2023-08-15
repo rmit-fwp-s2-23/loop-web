@@ -39,7 +39,7 @@ function MovieDetailsPage() {
           <label>Written Review:</label>
           <textarea
             name="writtenReview"
-            value={review.writtenReview}
+            value={review}
             onChange={handleChange}
             rows={6}
           />
