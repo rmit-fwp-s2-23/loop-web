@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import './Header.css'
+import { useAuth } from "../../AuthGlobal";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const isUserLoggedIn = localStorage.getItem('isLoggedIn');
-    setIsLoggedIn(isUserLoggedIn === 'true');
-  }, []);
+
+  const { isLoggedIn } = useAuth();
+
+  const { setIsLoggedIn } = useAuth();
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  }
 
   return (
     <header>
@@ -18,24 +22,24 @@ function Header() {
             <Link to="/">Home</Link>
           </li>
           {!isLoggedIn && (
+            <>
               <li>
                 <Link to="/signup">Sign Up</Link>
               </li>
-          )}
-          {!isLoggedIn && (
               <li>
                 <Link to="/signin">Sign In</Link>
               </li>
+            </>
           )}
           {isLoggedIn && (
+            <>
               <li>
-                <Link to="/">Log Out</Link>
+                <Link to="/" onClick={handleLogout}>Log Out</Link>
               </li>
-          )}
-          {isLoggedIn && (
               <li>
                 <Link to="/user-profile">User Profile</Link>
               </li>
+            </>
           )}
         </ul>
       </nav>

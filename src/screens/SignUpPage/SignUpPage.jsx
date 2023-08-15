@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
-
+import { registerUser } from "../../config";
 
 function SignUpPage() {
 
@@ -24,7 +24,7 @@ function SignUpPage() {
     
     e.preventDefault();
     // Handle form submission and store data in localStorage
-    localStorage.setItem("user", JSON.stringify(formData));
+    registerUser(JSON.stringify(formData));
     console.log("Sign up form submitted", formData);
 
     //Navigate to signup after successful Signup

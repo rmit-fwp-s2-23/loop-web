@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './SignInPage.css'
+import { useAuth } from "../../AuthGlobal";
 
 function SignInPage() {
 
   let navigate = useNavigate();
+
+  const { setIsLoggedIn } = useAuth();
 
   const [failedInfo, setFailedInfo] = useState('');
   const [isIncorrectDetails, setIsIncorrectDetails] = useState(false);
@@ -40,7 +43,7 @@ function SignInPage() {
         } else {
           //All details entered correctly
           setIsIncorrectDetails(false);
-          localStorage.setItem('isLoggedIn','true');
+          setIsLoggedIn(true);
           navigate('/');
           
         }
