@@ -64,7 +64,7 @@ function SignUpPage() {
   
   //If validated, Log user in
   const successfulSignup = () => {
-    setIsLoggedIn(true);
+    setIsLoggedIn(formData.email);
     navigate('/');
   }
   

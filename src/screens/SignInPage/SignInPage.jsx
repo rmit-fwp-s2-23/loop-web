@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './SignInPage.css'
 import { useAuth } from "../../AuthGlobal";
+import { Popup } from "../../components/Popup/Popup";
 
 function SignInPage() {
 
@@ -11,6 +12,8 @@ function SignInPage() {
 
   const [failedInfo, setFailedInfo] = useState('');
   const [isIncorrectDetails, setIsIncorrectDetails] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
 
   const [formData, setFormData] = useState({
@@ -27,8 +30,12 @@ function SignInPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // Handle login validation against localStorage data
-    const user = JSON.parse(localStorage.getItem("user"));
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    const user = users[formData.email];
+
+    console.log(user);
 
     if(user){
       if (user.email != formData.email){
@@ -42,16 +49,21 @@ function SignInPage() {
           console.log("incorrect password");
         } else {
           //All details entered correctly
-          setIsIncorrectDetails(false);
-          setIsLoggedIn(true);
-          navigate('/');
-          
+          setOpen(true);
+          setIsIncorrectDetails(false);          
         }
       }
     } else {
       //No registered user
     }
   };
+
+    //If validated, Log user in
+    const successfulLogin = () => {
+      setIsLoggedIn(formData.email);
+      navigate('/user-profile');
+    }
+    
 
   return (
     <div>
@@ -82,6 +94,7 @@ function SignInPage() {
         </div>
         <button type="submit">Sign In</button>
       </form>
+      {open ? <Popup text="Login Successful" closePopup={() => successfulLogin()} /> : null}
     </div>
   );
 }

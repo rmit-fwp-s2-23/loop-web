@@ -11,7 +11,7 @@ function Header() {
   const { setIsLoggedIn } = useAuth();
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    setIsLoggedIn('');
   }
 
   return (
@@ -21,7 +21,7 @@ function Header() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          {!isLoggedIn && (
+          {isLoggedIn == '' && (
             <>
               <li>
                 <Link to="/signup">Sign Up</Link>
@@ -31,7 +31,7 @@ function Header() {
               </li>
             </>
           )}
-          {isLoggedIn && (
+          {isLoggedIn != '' && (
             <>
               <li>
                 <Link to="/" onClick={handleLogout}>Log Out</Link>

@@ -1,8 +1,16 @@
 import React from "react";
+import { useAuth } from "../../AuthGlobal";
 
 function UserProfilePage() {
-  // Sample user data (assuming it's fetched from localStorage)
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  const { isLoggedIn } = useAuth();
+
+  console.log(isLoggedIn);
+
+
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users[isLoggedIn];
+
 
   return (
     <div>
