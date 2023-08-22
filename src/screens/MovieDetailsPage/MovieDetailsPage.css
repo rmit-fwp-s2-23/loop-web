@@ -1,61 +1,76 @@
-form {
-    display: flex;
-    flex-direction: column;
+.container {
     align-items: center;
+    text-align: center;
 }
-
-#starRating {
+  
+.card-container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px; /* Add some space between cards */
+  }
+  
+  .card-item {
+    width: 30%;
+    max-width: 100px;
+    min-height: 500px;
+  }
 
-#starRating label {
-    font-size: 24px;
+  #review-link:hover{
+    color: blue;
     cursor: pointer;
-    color: #ccc;
-    margin: 0 5px;
-}
-  
-#starRating input[type="radio"] {
-    display: none;
-}
+  }
 
-#starRating label:hover{
-  color: #ffcc00; /* Color for selected stars */
-}
+  #review-link{
+    padding-top: 10px;
+  }
 
-#starRating label:checked{
-    color: #ffcc00;
-}
+  #movie-image {
+    align-self: flex-start;
+  }
 
-form div {
-    margin-bottom: 15px;
+  #movie-image img{
+    max-width: 100%; 
+    height: auto; 
   }
   
-  label {
-    font-weight: bold;
+  #movie-timings {
+    align-self: center;
   }
   
-  input[type="number"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  #movie-reviews {
+    align-self: flex-end;
+  }
+
+  .user-review {
+    display: flex;
+    align-items: center; /* Align items vertically within each review */
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  .rating {
     font-size: 16px;
-  }
-
-  button {
-    background-color: #1e90ff;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    margin-right: 5px; /* Adjust the spacing between rating and review text */
   }
   
-  button:hover {
-    background-color: #0066cc;
+  .review-text {
+    flex: 1; /* Allow the review text to grow as much as possible */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    margin-left: 5px;
+  }
+  
+  .user-review div {
+    display: inline-flex;
+    padding: 2px;
+  }
+
+  #average-rating {
+    font-weight: bolder;
+  }
+
+  #review-link-container{
+    margin-top: 20px;
+    align-items: flex-end;
   }

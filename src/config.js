@@ -6,8 +6,15 @@ export const registerUser = (userDetailsString) => {
     userDetails.dateOfJoining = new Date().toISOString().split('T')[0];
 
     existingUsers[userDetails.email] = userDetails;
-
-    console.log(userDetails.dateOfJoining);
   
     localStorage.setItem('users', JSON.stringify(existingUsers));
 };
+
+export const submitReview = (userReviewString) => {
+    const existingReviews = JSON.parse(localStorage.getItem('reviews')) || {};
+    const userReview = JSON.parse(userReviewString);
+
+    existingReviews[userReview.id] = userReview;
+
+    localStorage.setItem('reviews', JSON.stringify(existingReviews));
+}

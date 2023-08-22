@@ -1,8 +1,8 @@
 .container{
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: auto;
 }
 
 .PageTitle{
@@ -18,20 +18,23 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
-#MovieCard {
-    display: inline-flex; 
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin: 10px; 
-    min-width: 300px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    color: #333;
+.card-item {
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin: 10px; 
+  min-width: 300px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  color: #333;
+}
+
+#MovieCard img {
+  max-width: 100%; 
+  height: auto; 
 }
 
 #MovieCard:hover {
