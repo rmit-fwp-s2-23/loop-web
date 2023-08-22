@@ -13,7 +13,7 @@
   .card-item {
     width: 30%;
     max-width: 100px;
-    min-height: 500px;
+    height: 480px;
   }
 
   #review-link:hover{
@@ -27,15 +27,17 @@
 
   #movie-image {
     align-self: flex-start;
+    overflow-y: hidden;
   }
 
   #movie-image img{
     max-width: 100%; 
-    height: auto; 
+    height: auto;
   }
   
   #movie-timings {
     align-self: center;
+    overflow-y: auto;
   }
   
   #movie-reviews {
@@ -71,6 +73,17 @@
   }
 
   #review-link-container{
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-bottom: 20px;
     align-items: flex-end;
+  }
+
+  #cinema-location {
+    margin-bottom: 3px;
+  }
+
+  .review-profile img{
+    width: 20px;
+    height: auto;
+    transform: translateY(5px);
   }

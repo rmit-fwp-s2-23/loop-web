@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./MovieReviewPage.css"
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
@@ -7,6 +7,7 @@ import { useAuth } from "../../AuthGlobal";
 
 function MovieReviewPage() {
   const location = useLocation();
+  let navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const movieId = queryParams.get('id'); // Save Movie Id from the main page
   const [rating, setRating] = useState(0);
@@ -27,11 +28,12 @@ function MovieReviewPage() {
     reviews[reviewId] = {rating, review};
     localStorage.setItem("reviews", JSON.stringify(reviews));
     console.log("Movie review submitted", review);
+    navigate('/movie-details?id=' + movieId)
   };
 
   return (
     <div className="container">
-      <h2 className="PageTitle">Movie Details</h2>
+      <h2 className="PageTitle">Movie Review</h2>
       {/* Add Movie Card and other Movie Details*/}
 
       {/*Review Form*/ }

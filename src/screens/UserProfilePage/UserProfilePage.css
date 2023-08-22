@@ -12,6 +12,13 @@
     align-items: center;
 }
 
+#username-edit {
+    margin-top: 20px;
+}
+#email-edit{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 #profileImage {
     padding-bottom: 0px;
     width: 80px;
@@ -22,14 +29,12 @@
 }
 
 #joiningDate {
-    margin-bottom: 0px;
+    margin-bottom: 4px;
     font-size: 11px;
 }
 
 .user-profile-actions img {
+    margin-top: 20px;
     width: 15px;
-}
-
-#bin-image{
-    color: red;
+    padding: 15px;
 }

@@ -32,7 +32,7 @@ function UserProfilePage() {
     setEditedEmail(event.target.value);
   };
 
-  const handleSaveChanges = () => {
+  const handleSaveChanges = (e) => {
     // Update user data in the localStorage
     users[isLoggedIn].username = editedUsername;
     users[isLoggedIn].email = editedEmail;
@@ -45,9 +45,10 @@ function UserProfilePage() {
     const popupConfirm = window.confirm("Are you sure?");
     if (popupConfirm) {
       setIsLoggedIn('');
-      navigate('/');
-      delete users[user.email];
+      navigate('/')
+      delete users[user.email]
       localStorage.setItem("users", JSON.stringify(users));
+      
     }
   }
 
@@ -60,21 +61,23 @@ function UserProfilePage() {
           {isEditing ? (
             <>
               <input
+              id="username-edit"
                 type="text"
                 value={editedUsername}
                 onChange={handleUsernameChange}
               />
               <input
+              id="email-edit"
                 type="email"
                 value={editedEmail}
                 onChange={handleEmailChange}
+                required
               />
             </>
           ) : (
             <>
-              <p>{user.username}</p>
-              <p>{user.email}</p>
-              <p id="joiningDate">Date of joining: {user.dateOfJoining}</p>
+              <div>{user.username}</div>
+              <div>{user.email}</div>
             </>
           )}
           <div className="user-profile-actions">
@@ -89,6 +92,8 @@ function UserProfilePage() {
               </>
             )}
           </div>
+
+          <div id="joiningDate">Date of joining: {user.dateOfJoining}</div>
           
         </div>
       ) : (

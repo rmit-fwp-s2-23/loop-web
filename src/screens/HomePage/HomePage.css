@@ -1,23 +1,23 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: auto;
 }
 
-.PageTitle{
+.PageTitle {
   color: #333;
   text-align: center;
   font-size: 32px;
-  margin-bottom: 20px;    
+  margin-bottom: 20px;
 }
 
-#MovieList{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
+#MovieList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card-item {
@@ -26,17 +26,44 @@
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 5px;
-  margin: 10px; 
-  min-width: 300px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin: 10px;
+  min-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #333;
 }
 
 #MovieCard img {
-  max-width: 100%; 
-  height: auto; 
+  max-width: 100%;
+  height: auto;
 }
 
 #MovieCard:hover {
-    background-color: #c8c8c8;
+  background-color: #c8c8c8;
+}
+
+.information-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.information-section h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.information-section h3 {
+  color: #555;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.information-section p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.6;
 }
