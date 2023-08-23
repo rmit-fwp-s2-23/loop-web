@@ -1,28 +1,49 @@
 header {
-    background-color: #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: sticky;
-    top: 0;
-    width: 100%;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-  }
-  
-  nav ul li {
-    margin-right: 25px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  nav ul li a:hover {
-    color: green;
-  }
-  
+  background-color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 25px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: green;
+}
+
+.slogan {
+  color: white;
+  margin-right: 30px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.logo img {
+  background-color: #fff;
+  max-height: 30px; 
+  margin-right: 10px;
+}
+.right-menu{
+  display: flex;
+}

@@ -35,7 +35,6 @@ function SignInPage() {
     const users = JSON.parse(localStorage.getItem('users')) || {};
     const user = users[formData.email];
 
-    console.log(user);
 
     if(user){
       if (user.email != formData.email){
@@ -54,7 +53,8 @@ function SignInPage() {
         }
       }
     } else {
-      //No registered user
+      setIsIncorrectDetails(true);
+      setFailedInfo('User not found');
     }
   };
 
@@ -63,6 +63,8 @@ function SignInPage() {
       setIsLoggedIn(formData.email);
       navigate('/user-profile');
     }
+
+    
     
 
   return (
@@ -92,7 +94,7 @@ function SignInPage() {
           isIncorrectDetails && <p>{failedInfo}</p>
         }
         </div>
-        <button type="submit">Sign In</button>
+        <button className="formButton" type="submit">Sign In</button>
       </form>
       {open ? <Popup text="Login Successful" closePopup={() => successfulLogin()} /> : null}
     </div>

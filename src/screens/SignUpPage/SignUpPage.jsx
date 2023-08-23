@@ -17,7 +17,7 @@ function SignUpPage() {
 
 
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -88,11 +88,11 @@ function SignUpPage() {
       <h2 className="PageTitle">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Username:</label>
+          <label>Name:</label>
           <input
             type="text"
-            name="username"
-            value={formData.username}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />

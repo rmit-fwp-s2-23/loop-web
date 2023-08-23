@@ -30,11 +30,11 @@ function HomePage() {
       {/* Information Section */}
       <div className="information-section">
         <h2>About Loop Web</h2>
-        <p>Loop Web is a leading cinema chain known for its exceptional movie experiences.</p>
+        <p>Loop Web is s a long running cinema chain operator known for its exceptional movie experiences.</p>
         <h3>Cinema Locations</h3>
-        <p>We have cinemas in major cities, providing convenient access to movie lovers.</p>
+        <p>We have cinemas all throughout Melbourne and are constantly growing</p>
         <h3>What Sets Us Apart</h3>
-        <p>We differentiate ourselves through state-of-the-art technology, comfortable seating, and a diverse selection of films.</p>
+        <p>We are commited to your entertainment with state-of-the-art technology, affordable rates, comfortable seating, and a diverse selection of films.</p>
       </div>
     </div>
   );

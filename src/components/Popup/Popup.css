@@ -6,18 +6,39 @@
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    }
-.popup-body {
-    position: absolute;
-    left: 30%;
-    right: 30%;
-    bottom: 55%;
-    top: 30%;
+  }
+  
+  .popup-body {
     text-align: center;
-    margin: auto;
+    padding: 20px;
     border-radius: 15px;
     border-color: black;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: 80%; /* Adjust the maximum width to your preference */
+  }
+  
+  .formButton {
+    margin-top: 20px;
+  }
+
+  #delete-button {
+    margin-left: 10px;
+    background-color: rgb(193, 21, 21);
+  }
+
+  #delete-button:hover{
+    background-color: red;
+  }
+  
+  /* Add a media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .popup-body {
+      max-width: 90%;
     }
+  }
+  
