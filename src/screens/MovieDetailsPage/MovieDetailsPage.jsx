@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import profile from '../../assets/profile.svg'
 import './MovieDetailsPage.css'
+import { useAuth } from "../../AuthGlobal";
 
 function MovieDetailsPage() {
     const location = useLocation();
@@ -11,6 +12,8 @@ function MovieDetailsPage() {
     const SelectedMovieId = queryParams.get('id');
 
     const upcomingMovies = JSON.parse(localStorage.getItem('upcomingMovies')) || [];
+
+    const { isLoggedIn } = useAuth();
 
     const selectedMovie = upcomingMovies.find(movie => movie.id === Number(SelectedMovieId));
 
@@ -79,7 +82,8 @@ function MovieDetailsPage() {
                 <div className="card-item" id="movie-reviews">
                     <div id="average-rating">{averageRating} ★</div>
                     <div id="review-link-container">
-                        <a id="review-link" onClick={() => navigate('/movie-review?id=' + SelectedMovieId)}>Leave a review</a>
+                        {isLoggedIn !== '' && <a id="review-link" onClick={() => navigate('/movie-review?id=' + SelectedMovieId)}>Leave a review</a>}
+                        {isLoggedIn === '' && <a id="review-link" onClick={() => navigate('/signin')}>Sign in to leave a review</a>}
                     </div>
                     <div id="reviews">
                         {Object.entries(reviews).map(([reviewId, review]) => {

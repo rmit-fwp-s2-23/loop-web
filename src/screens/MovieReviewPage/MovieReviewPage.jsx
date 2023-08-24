@@ -13,15 +13,29 @@ function MovieReviewPage() {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
   const { isLoggedIn } = useAuth();
+  const [errorMessage, setErrorMessage] = useState("");
+
 
 
 
   const handleChange = (e) => {
     setReview(e.target.value);
+    
+      if(review.length === 249){
+        setErrorMessage("You cannot enter more than 250 characters");
+      } else {
+        setErrorMessage("");
+      }
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(review === ''){
+      setErrorMessage("Please provide a written review")
+    } else if (rating < 1) {
+      setErrorMessage("Please provide a Rating")
+    } else {
     // Handle storing movie review in localStorage
     const reviewId = movieId + '_' + isLoggedIn;
     const reviews = JSON.parse(localStorage.getItem("reviews")) || {};
@@ -29,6 +43,7 @@ function MovieReviewPage() {
     localStorage.setItem("reviews", JSON.stringify(reviews));
     console.log("Movie review submitted", review);
     navigate('/movie-details?id=' + movieId)
+    }
   };
 
   return (
@@ -48,7 +63,11 @@ function MovieReviewPage() {
             value={review}
             onChange={handleChange}
             rows={6}
+            maxLength={250}
           />
+        </div>
+        <div className="errorMessage">
+            <p>{errorMessage}</p>
         </div>
         <button type="submit">Submit Review</button>
       </form>
