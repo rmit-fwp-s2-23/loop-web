@@ -7,7 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
-    gap: 20px; /* Add some space between cards */
+    gap: 20px;
   }
   
   .card-item {
@@ -46,20 +46,20 @@
 
   .user-review {
     display: flex;
-    align-items: center; /* Align items vertically within each review */
+    align-items: center;
     text-align: left;
     margin-top: 10px;
   }
   
   .rating {
     font-size: 16px;
-    margin-right: 5px; /* Adjust the spacing between rating and review text */
+    margin-right: 5px; 
   }
   
   .review-text {
-    flex: 1; /* Allow the review text to grow as much as possible */
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflowing text */
+    flex: 1; 
+    white-space: nowrap;
+    overflow: hidden;
     margin-left: 5px;
   }
   

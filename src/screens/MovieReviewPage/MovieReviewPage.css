@@ -22,7 +22,7 @@ form {
 }
 
 #starRating label:hover{
-  color: #ffcc00; /* Color for selected stars */
+  color: #ffcc00;
 }
 
 #starRating label:checked{

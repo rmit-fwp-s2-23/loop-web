@@ -24,6 +24,8 @@ function UserProfilePage() {
   const [editedname, setEditedname] = useState(user.name);
   const [editedEmail, setEditedEmail] = useState(user.email);
 
+  const reviews = JSON.parse(localStorage.getItem('reviews')) || {}; //Existing Reviews
+
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
   }
@@ -49,14 +51,33 @@ function UserProfilePage() {
       return;
     }
 
-    if (editedEmail !== isLoggedIn) //Change in Email
-    {
-      // Update user data in the localStorage
+    // Check if the edited email already exists
+    if (editedEmail !== isLoggedIn && users[editedEmail]) {
+      setErrorMessage("Email address already registered");
+      return;
+    }
+
+    // Update user data in the localStorage
+    if (editedEmail !== isLoggedIn) {
       const updatedUser = {
         ...users[isLoggedIn], // Copy existing user data
         name: editedname,
         email: editedEmail,
       };
+
+      // Update reviews with the new email
+      const updatedReviews = {};
+      for (const reviewId in reviews) {
+        const review = reviews[reviewId];
+        if (review.isLoggedIn === isLoggedIn) {
+          updatedReviews[reviewId.replace(isLoggedIn, editedEmail)] = {
+            ...review,
+            isLoggedIn: editedEmail,
+          };
+        } else {
+          updatedReviews[reviewId] = review;
+        }
+      }
 
       // Remove the old email key and update with the new email key
       const updatedUsers = {
@@ -66,29 +87,37 @@ function UserProfilePage() {
       delete updatedUsers[user.email];
 
       localStorage.setItem("users", JSON.stringify(updatedUsers));
-    }
-    else if (editedname !== users[isLoggedIn].name && editedEmail === isLoggedIn) //Change in just name
-    {
+      localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+    } else if (editedname !== users[isLoggedIn].name && editedEmail === isLoggedIn) {
       users[isLoggedIn].name = editedname;
       localStorage.setItem("users", JSON.stringify(users));
     }
 
-
-
     setIsLoggedIn(editedEmail);
-    setIsEditing(false); // Exit edit mode
-
-    console.log(isLoggedIn);
+    setIsEditing(false); // Close editing mode
   };
+
 
 
 
   //Function to handle delete click from popup
   const deletePopupFunction = () => {
+
+    // Delete All existing reviews of the user
+    const updatedReviews = {};
+    for (const reviewId in reviews) {
+      const review = reviews[reviewId];
+      if (review.isLoggedIn !== isLoggedIn) {
+        updatedReviews[reviewId] = review;
+      }
+    }
+
     setIsLoggedIn('');
     navigate('/')
     delete users[user.email]
+    localStorage.setItem("reviews", JSON.stringify(updatedReviews));
     localStorage.setItem("users", JSON.stringify(users));
+
   }
 
   const closePopupFunction = () => {

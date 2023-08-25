@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
+import Carousel from "../../components/Carousel/Carousel";
 
 function HomePage() {
   let navigate = useNavigate() //Navigator to link to other pages
@@ -9,37 +10,23 @@ function HomePage() {
   const storedUpcomingMovies = localStorage.getItem('upcomingMovies');
   const upcomingMovies = storedUpcomingMovies ? JSON.parse(storedUpcomingMovies) : [];
 
-  const handleMovieClick = (movieId) => {
-    navigate('/movie-details?id=' + movieId);
-  }
-
   return (
     <div className="container">
       <div>
         <h1 className="PageTitle">Upcoming Movies</h1>
       </div>
-      <ul id="MovieList">
-        {upcomingMovies.map((movie) => (
-          <li onClick={() => handleMovieClick(movie.id)} className="card-item" id="MovieCard" key={movie.id}>
-            <img src={movie.image} alt={movie.title} />
-            <strong>{movie.title}</strong>
-          </li>
-        ))}
-      </ul>
-      
-      {/* Information Section */}
+      <Carousel upcomingMovies={upcomingMovies} />
+
       <div className="information-section">
         <h2>About Loop Web</h2>
-        <p>Loop Web is s a long running cinema chain operator known for its exceptional movie experiences.</p>
+        <p>Loop Web is s a long running cinema chain operator known for its exceptional movie experiences</p>
         <h3>Cinema Locations</h3>
         <p>We have cinemas all throughout Melbourne and are constantly growing</p>
         <h3>What Sets Us Apart</h3>
-        <p>We are commited to your entertainment with state-of-the-art technology, affordable rates, comfortable seating, and a diverse selection of films.</p>
+        <p>We are commited to your entertainment with state-of-the-art technology, affordable rates, comfortable seating, and a diverse selection of films from all around the world</p>
       </div>
     </div>
   );
 }
 
 export default HomePage;
-
-// ...rest of your CSS styles

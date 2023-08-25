@@ -12,14 +12,6 @@
   margin-bottom: 20px;
 }
 
-#MovieList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .card-item {
   align-items: center;
   justify-content: space-between;
@@ -30,15 +22,6 @@
   min-width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #333;
-}
-
-#MovieCard img {
-  max-width: 100%;
-  height: auto;
-}
-
-#MovieCard:hover {
-  background-color: #c8c8c8;
 }
 
 .information-section {

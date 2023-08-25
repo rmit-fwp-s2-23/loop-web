@@ -15,12 +15,18 @@ function SignUpPage() {
 
   const [open, setOpen] = useState(false); //State for showing Pop Up
 
+  const users = JSON.parse(localStorage.getItem("users")) || {}; //Existing Users
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -71,6 +77,16 @@ function SignUpPage() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!isValidEmail(formData.email)) {
+      setErrorMessage("Email address is not valid");
+      return;
+    }
+
+    if (users[formData.email]) {
+      setErrorMessage("Email address already registered");
+      return;
+    }
 
     if(validate(formData.password))
     {

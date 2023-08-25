@@ -1,0 +1,46 @@
+.carousel-container {
+    width: 100%;
+    max-width: 100%; 
+    margin: 0 auto;
+    overflow: hidden; 
+    background-color: #e4e4e4;
+    padding-left: auto;
+    padding-right: auto;
+  }
+  
+  .carousel {
+    display: flex;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    scroll-behavior: smooth; 
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    padding: 10px;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+    min-width: 300px;
+  }
+
+  #movie-card:hover {
+    background-color: #c8c8c8;
+    transform: scale(0.99);
+
+  }  
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  

@@ -10,10 +10,15 @@ function MovieReviewPage() {
   let navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const movieId = queryParams.get('id'); // Save Movie Id from the main page
-  const [rating, setRating] = useState(0);
-  const [review, setReview] = useState("");
   const { isLoggedIn } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
+  const isEditing = queryParams.get('editing');
+
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || {}; //Get Stored Reviews
+  const reviewId = movieId + '_' + isLoggedIn; //Unique ID for storing or retrieving Reviews
+  
+  const [rating, setRating] = useState(isEditing ? reviews[reviewId].rating : 0);
+  const [review, setReview] = useState(isEditing ? reviews[reviewId].review : "");
 
 
 
@@ -29,6 +34,12 @@ function MovieReviewPage() {
     
   };
 
+  const deleteClick = () => {
+    delete reviews[reviewId];
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+    navigate('/movie-details?id=' + movieId)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(review === ''){
@@ -37,9 +48,8 @@ function MovieReviewPage() {
       setErrorMessage("Please provide a Rating")
     } else {
     // Handle storing movie review in localStorage
-    const reviewId = movieId + '_' + isLoggedIn;
-    const reviews = JSON.parse(localStorage.getItem("reviews")) || {};
-    reviews[reviewId] = {rating, review};
+    console.log(reviewId);
+    reviews[reviewId] = {isLoggedIn, movieId, rating, review};
     localStorage.setItem("reviews", JSON.stringify(reviews));
     console.log("Movie review submitted", review);
     navigate('/movie-details?id=' + movieId)
@@ -49,9 +59,7 @@ function MovieReviewPage() {
   return (
     <div className="container">
       <h2 className="PageTitle">Movie Review</h2>
-      {/* Add Movie Card and other Movie Details*/}
-
-      {/*Review Form*/ }
+      
       <form onSubmit={handleSubmit}>
 
       <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
@@ -69,7 +77,8 @@ function MovieReviewPage() {
         <div className="errorMessage">
             <p>{errorMessage}</p>
         </div>
-        <button type="submit">Submit Review</button>
+        {isEditing && <button type="button" id="delete-button" onClick={deleteClick}>Delete</button>}
+        <button className="formButton" type="submit">Submit Review</button>
       </form>
     </div>
   );

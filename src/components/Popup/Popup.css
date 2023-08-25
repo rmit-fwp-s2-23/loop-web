@@ -19,7 +19,7 @@
     border-color: black;
     background: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    max-width: 80%; /* Adjust the maximum width to your preference */
+    max-width: 80%; 
   }
   
   .formButton {
@@ -35,7 +35,6 @@
     background-color: red;
   }
   
-  /* Add a media query for smaller screens */
   @media screen and (max-width: 768px) {
     .popup-body {
       max-width: 90%;
