@@ -15,7 +15,7 @@ function MovieDetailsPage() {
 
     const { isLoggedIn } = useAuth();
 
-    const selectedMovie = upcomingMovies.find(movie => movie.id === Number(SelectedMovieId));    
+    const selectedMovie = upcomingMovies.find(movie => movie.id === Number(SelectedMovieId));
 
 
     //Hard coded movie show times
@@ -89,7 +89,7 @@ function MovieDetailsPage() {
             totalRating += parseInt(review.rating, 10);
             reviewCount++;
 
-            if(isLoggedIn === review.isLoggedIn){
+            if (isLoggedIn === review.isLoggedIn) {
                 reviewSubmitted = true;
             }
         }
@@ -108,7 +108,7 @@ function MovieDetailsPage() {
                     <img alt="Movie" src={selectedMovie ? selectedMovie.image : ""} />
                 </div>
 
-                
+
 
                 <div className="card-item" id="movie-timings">
                     {movieShowTimes.map((location) => {
@@ -130,7 +130,7 @@ function MovieDetailsPage() {
                     <div id="average-rating">{averageRating} ★</div>
                     <div id="review-link-container">
                         {isLoggedIn !== '' && !reviewSubmitted && <a id="review-link" onClick={() => navigate('/movie-review?id=' + SelectedMovieId)}>Leave a review</a>}
-                        {isLoggedIn !== '' && reviewSubmitted && <a id="review-link" onClick={() => navigate('/movie-review?id=' + SelectedMovieId+'&editing=true')}>Edit or Delete Your Review</a>}
+                        {isLoggedIn !== '' && reviewSubmitted && <a id="review-link" onClick={() => navigate('/movie-review?id=' + SelectedMovieId + '&editing=true')}>Edit or Delete Your Review</a>}
                         {isLoggedIn === '' && <a id="review-link" onClick={() => navigate('/signin')}>Sign in to leave a review</a>}
                     </div>
                     <div id="reviews">
@@ -142,12 +142,12 @@ function MovieDetailsPage() {
                                         <div className="review-text">{review.review}</div>
                                         <div className="review-profile"><img src={profile} onClick={console.log("hi")}></img></div>
                                     </div>
-                                    
+
                                 );
                             }
                             return null;
                         })}
-                        
+
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ function MovieReviewPage() {
 
   const reviews = JSON.parse(localStorage.getItem("reviews")) || {}; //Get Stored Reviews
   const reviewId = movieId + '_' + isLoggedIn; //Unique ID for storing or retrieving Reviews
-  
+
   const [rating, setRating] = useState(isEditing ? reviews[reviewId].rating : 0);
   const [review, setReview] = useState(isEditing ? reviews[reviewId].review : "");
 
@@ -25,13 +25,13 @@ function MovieReviewPage() {
 
   const handleChange = (e) => {
     setReview(e.target.value);
-    
-      if(review.length === 249){
-        setErrorMessage("You cannot enter more than 250 characters");
-      } else {
-        setErrorMessage("");
-      }
-    
+
+    if (review.length === 249) {
+      setErrorMessage("You cannot enter more than 250 characters");
+    } else {
+      setErrorMessage("");
+    }
+
   };
 
   const deleteClick = () => {
@@ -42,27 +42,27 @@ function MovieReviewPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(review === ''){
+    if (review === '') {
       setErrorMessage("Please provide a written review")
     } else if (rating < 1) {
       setErrorMessage("Please provide a Rating")
     } else {
-    // Handle storing movie review in localStorage
-    console.log(reviewId);
-    reviews[reviewId] = {isLoggedIn, movieId, rating, review};
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-    console.log("Movie review submitted", review);
-    navigate('/movie-details?id=' + movieId)
+      // Handle storing movie review in localStorage
+      console.log(reviewId);
+      reviews[reviewId] = { isLoggedIn, movieId, rating, review };
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+      console.log("Movie review submitted", review);
+      navigate('/movie-details?id=' + movieId)
     }
   };
 
   return (
     <div className="container">
       <h2 className="PageTitle">Movie Review</h2>
-      
+
       <form onSubmit={handleSubmit}>
 
-      <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
+        <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
 
         <div>
           <label>Written Review:</label>
@@ -75,7 +75,7 @@ function MovieReviewPage() {
           />
         </div>
         <div className="errorMessage">
-            <p>{errorMessage}</p>
+          <p>{errorMessage}</p>
         </div>
         {isEditing && <button type="button" id="delete-button" onClick={deleteClick}>Delete</button>}
         <button className="formButton" type="submit">Submit Review</button>

@@ -44,7 +44,7 @@ function Header() {
           </ul>
         </div>
         <div className="right-menu">
-        <div className="logo">
+          <div className="logo">
             <img src={movie} alt="Logo" />
           </div>
           <div className="slogan">

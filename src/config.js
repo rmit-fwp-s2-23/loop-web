@@ -6,7 +6,7 @@ export const registerUser = (userDetailsString) => {
     userDetails.dateOfJoining = new Date().toISOString().split('T')[0];
 
     existingUsers[userDetails.email] = userDetails;
-  
+
     localStorage.setItem('users', JSON.stringify(existingUsers));
 };
 

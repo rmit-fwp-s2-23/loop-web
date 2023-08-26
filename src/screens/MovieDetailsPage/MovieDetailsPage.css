@@ -1,89 +1,89 @@
 .container {
-    align-items: center;
-    text-align: center;
+  align-items: center;
+  text-align: center;
 }
-  
+
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    gap: 20px;
-  }
-  
-  .card-item {
-    width: 30%;
-    max-width: 100px;
-    height: 480px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
 
-  #review-link:hover{
-    color: blue;
-    cursor: pointer;
-  }
+.card-item {
+  width: 30%;
+  max-width: 100px;
+  height: 480px;
+}
 
-  #review-link{
-    padding-top: 10px;
-  }
+#review-link:hover {
+  color: blue;
+  cursor: pointer;
+}
 
-  #movie-image {
-    align-self: flex-start;
-    overflow-y: hidden;
-  }
+#review-link {
+  padding-top: 10px;
+}
 
-  #movie-image img{
-    max-width: 100%; 
-    height: auto;
-  }
-  
-  #movie-timings {
-    align-self: center;
-    overflow-y: auto;
-  }
-  
-  #movie-reviews {
-    align-self: flex-end;
-  }
+#movie-image {
+  align-self: flex-start;
+  overflow-y: hidden;
+}
 
-  .user-review {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    margin-top: 10px;
-  }
-  
-  .rating {
-    font-size: 16px;
-    margin-right: 5px; 
-  }
-  
-  .review-text {
-    flex: 1; 
-    white-space: nowrap;
-    overflow: hidden;
-    margin-left: 5px;
-  }
-  
-  .user-review div {
-    display: inline-flex;
-    padding: 2px;
-  }
+#movie-image img {
+  max-width: 100%;
+  height: auto;
+}
 
-  #average-rating {
-    font-weight: bolder;
-  }
+#movie-timings {
+  align-self: center;
+  overflow-y: auto;
+}
 
-  #review-link-container{
-    margin-top: 5px;
-    margin-bottom: 20px;
-    align-items: flex-end;
-  }
+#movie-reviews {
+  align-self: flex-end;
+}
 
-  #cinema-location {
-    margin-bottom: 3px;
-  }
+.user-review {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-top: 10px;
+}
 
-  .review-profile img{
-    width: 20px;
-    height: auto;
-    transform: translateY(5px);
-  }
+.rating {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.review-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 5px;
+}
+
+.user-review div {
+  display: inline-flex;
+  padding: 2px;
+}
+
+#average-rating {
+  font-weight: bolder;
+}
+
+#review-link-container {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+#cinema-location {
+  margin-bottom: 3px;
+}
+
+.review-profile img {
+  width: 20px;
+  height: auto;
+  transform: translateY(5px);
+}

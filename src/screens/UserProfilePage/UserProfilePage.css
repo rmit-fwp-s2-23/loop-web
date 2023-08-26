@@ -2,9 +2,9 @@
     padding: 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
-    margin: 10px; 
-    width: 250px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #333;
     text-align: center;
     display: flex;
@@ -15,16 +15,19 @@
 #name-edit {
     margin-top: 20px;
 }
-#email-edit{
+
+#email-edit {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
 #profileImage {
     padding-bottom: 0px;
     width: 80px;
 }
 
-.user-card p, .user-card input {
+.user-card p,
+.user-card input {
     margin-top: 1px;
 }
 

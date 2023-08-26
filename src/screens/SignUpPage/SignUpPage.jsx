@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../config";
 import './SignUpPage.css';
 import { Popup } from "../../components/Popup/Popup";
@@ -37,29 +37,29 @@ function SignUpPage() {
 
   //This method validates the password entered by the user and sets specific error messages
   const validate = (password) => {
-    if(password.length < 8){
+    if (password.length < 8) {
       setErrorMessage("Please enter a password that is atleast 8 characters long")
       return false;
-    } 
-    
+    }
+
     const upper = /[A-Z]/.test(password);
     const lower = /[a-z]/.test(password);
 
-    if(!upper || !lower){
+    if (!upper || !lower) {
       setErrorMessage("Password must contain an Upper case and a lower case character")
       return false;
     }
 
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-  
-    if(!specialChars.test(password)){
+
+    if (!specialChars.test(password)) {
       setErrorMessage("Password must contain atleast one special character")
       return false;
     }
 
     const numbers = /\d/g;
 
-    if(!numbers.test(password)){
+    if (!numbers.test(password)) {
       setErrorMessage("Password must contain atleast one numeric character")
       return false
     }
@@ -67,14 +67,14 @@ function SignUpPage() {
     return true;
 
   }
-  
+
   //If validated, Log user in
   const successfulSignup = () => {
     setIsLoggedIn(formData.email);
     navigate('/');
   }
-  
-  
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -88,8 +88,7 @@ function SignUpPage() {
       return;
     }
 
-    if(validate(formData.password))
-    {
+    if (validate(formData.password)) {
       // Handle form submission and store data in localStorage
       registerUser(JSON.stringify(formData));
       console.log("Sign up form submitted", formData);
@@ -134,7 +133,7 @@ function SignUpPage() {
           />
         </div>
         <div className="errorMessage">
-            <p>{errorMessage}</p>
+          <p>{errorMessage}</p>
         </div>
         <button className="formButton" type="submit">Sign Up</button>
       </form>

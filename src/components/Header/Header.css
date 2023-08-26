@@ -5,6 +5,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 nav {
@@ -41,9 +42,10 @@ nav ul li a:hover {
 
 .logo img {
   background-color: #fff;
-  max-height: 30px; 
+  max-height: 30px;
   margin-right: 10px;
 }
-.right-menu{
+
+.right-menu {
   display: flex;
 }

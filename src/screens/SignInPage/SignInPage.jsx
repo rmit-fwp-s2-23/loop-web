@@ -36,20 +36,20 @@ function SignInPage() {
     const user = users[formData.email];
 
 
-    if(user){
-      if (user.email != formData.email){
+    if (user) {
+      if (user.email != formData.email) {
         setIsIncorrectDetails(true);
         setFailedInfo('Email not found');
         console.log("incorrect email");
       } else {
-        if (user.password != formData.password){
+        if (user.password != formData.password) {
           setIsIncorrectDetails(true);
           setFailedInfo('Incorrect Password entered');
           console.log("incorrect password");
         } else {
           //All details entered correctly
           setOpen(true);
-          setIsIncorrectDetails(false);          
+          setIsIncorrectDetails(false);
         }
       }
     } else {
@@ -58,14 +58,14 @@ function SignInPage() {
     }
   };
 
-    //If validated, Log user in
-    const successfulLogin = () => {
-      setIsLoggedIn(formData.email);
-      navigate('/user-profile');
-    }
+  //If validated, Log user in
+  const successfulLogin = () => {
+    setIsLoggedIn(formData.email);
+    navigate('/user-profile');
+  }
 
-    
-    
+
+
 
   return (
     <div>
@@ -90,9 +90,9 @@ function SignInPage() {
           />
         </div>
         <div className="incorrectDetails">
-        {
-          isIncorrectDetails && <p>{failedInfo}</p>
-        }
+          {
+            isIncorrectDetails && <p>{failedInfo}</p>
+          }
         </div>
         <button className="formButton" type="submit">Sign In</button>
       </form>
